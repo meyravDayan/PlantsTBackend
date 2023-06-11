@@ -104,7 +104,7 @@ export default class PlantsController {
                 }
             });
             // newPlantProfile.dateCreated = new Date().toJSON().slice(0, 10);
-            if (prefrencedWater in filteredPlantProfile) {
+            if ("prefrencedWater" in filteredPlantProfile) {
                 newPlantProfile.waterFrequencyScores =
                     wateringFrequencyDaysValues[
                         newPlantProfile.prefrences.water
