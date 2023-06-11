@@ -61,11 +61,12 @@ export default class PlantsController {
                         : null;
                 }
             });
-            newPlantProfile.waterFrequencyScores = wateringFrequencyDaysValues[
-                newPlantProfile.prefrences.water
-            ]
-                ? wateringFrequencyDaysValues[newPlantProfile.prefrences.water]
-                : 0;
+            newPlantProfile["waterFrequencyScores"] =
+                wateringFrequencyDaysValues[newPlantProfile.prefrences.water]
+                    ? wateringFrequencyDaysValues[
+                          newPlantProfile.prefrences.water
+                      ]
+                    : 0;
             newPlantProfile.dateCreated = new Date().toJSON().slice(0, 10);
             console.log(newPlantProfile);
             const PlantProfileResponse = await PlantsDAO.addPlant(
@@ -107,10 +108,10 @@ export default class PlantsController {
             if (filteredPlantProfile.includes("prefrencedWater")) {
                 newPlantProfile["waterFrequencyScores"] =
                     wateringFrequencyDaysValues[
-                        newPlantProfile.prefrences["water"]
+                        newPlantProfile["prefrences.water"]
                     ]
                         ? wateringFrequencyDaysValues[
-                              newPlantProfile.prefrences["water"]
+                              newPlantProfile["prefrences.water"]
                           ]
                         : 0;
             }
