@@ -50,14 +50,22 @@ export default class PlantsDAO {
                             $multiply: [
                                 "$waterFrequencyScores",
                                 {
-                                    $divide: [
+                                    $round: [
                                         {
-                                            $subtract: [
-                                                new Date(),
-                                                new Date("$lastWatered"),
+                                            $divide: [
+                                                {
+                                                    $subtract: [
+                                                        new Date(),
+                                                        {
+                                                            $toDate:
+                                                                "$lastWatered",
+                                                        }, // Convert "$lastWatered" to a date object
+                                                    ],
+                                                },
+                                                1000 * 60 * 60 * 24, // Convert milliseconds to days
                                             ],
                                         },
-                                        1000 * 60 * 60 * 24, // Convert milliseconds to days
+                                        0,
                                     ],
                                 },
                             ],
