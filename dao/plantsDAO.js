@@ -54,7 +54,7 @@ export default class PlantsDAO {
                                         {
                                             $subtract: [
                                                 new Date(),
-                                                "$lastWatered",
+                                                new Date("$lastWatered"),
                                             ],
                                         },
                                         1000 * 60 * 60 * 24, // Convert milliseconds to days
