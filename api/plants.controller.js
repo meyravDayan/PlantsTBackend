@@ -107,10 +107,10 @@ export default class PlantsController {
             if (filteredPlantProfile.includes("prefrencedWater")) {
                 newPlantProfile["waterFrequencyScores"] =
                     wateringFrequencyDaysValues[
-                        newPlantProfile.prefrences.water
+                        newPlantProfile.prefrences["water"]
                     ]
                         ? wateringFrequencyDaysValues[
-                              newPlantProfile.prefrences.water
+                              newPlantProfile.prefrences["water"]
                           ]
                         : 0;
             }
