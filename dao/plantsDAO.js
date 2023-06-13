@@ -80,9 +80,8 @@ export default class PlantsDAO {
         }
 
         const displayCursor = cursor
-            .limit(plantsPerPage)
-            .skip(plantsPerPage * page);
-
+            .skip(plantsPerPage * page)
+            .limit(plantsPerPage);
         try {
             const plantsList = await displayCursor.toArray();
             const totalNumPlants = await plants.countDocuments(query);
@@ -161,7 +160,7 @@ export default class PlantsDAO {
     static async addPlant(userId, plantProfile) {
         try {
             plantProfile.user_id = new ObjectId(userId);
-            console.log(plantProfile);
+            // console.log(plantProfile);
             return await plants.insertOne(plantProfile);
         } catch (e) {
             console.error(`Unable to post plant, ${e}`);
